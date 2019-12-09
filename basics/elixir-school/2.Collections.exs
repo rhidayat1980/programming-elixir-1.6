@@ -70,21 +70,20 @@ IO.inspect(status)
 my_kw = [foo: "bar", hello: "world"]
 my_kw |> IO.inspect()
 
-Keyword.delete(my_kw, :foo) |> IO.inspect() # Keyword.delete only delete one key
+# Keyword.delete only delete one key
+Keyword.delete(my_kw, :foo) |> IO.inspect()
 Keyword.delete(my_kw, :foo, "bar") |> IO.inspect()
-Keyword.drop([a: 1, b: 2, b: 3, c: 3, a: 5], [:b, :d]) |> IO.inspect
-Keyword.equal?([a: 1, b: 2], [a: 1, c: 3]) |> IO.inspect
-Keyword.fetch(my_kw, :boom) |> IO.inspect
-Keyword.fetch(my_kw, :hello) |> IO.inspect
-Keyword.fetch!(my_kw, :hello) |> IO.inspect
+Keyword.drop([a: 1, b: 2, b: 3, c: 3, a: 5], [:b, :d]) |> IO.inspect()
+Keyword.equal?([a: 1, b: 2], a: 1, c: 3) |> IO.inspect()
+Keyword.fetch(my_kw, :boom) |> IO.inspect()
+Keyword.fetch(my_kw, :hello) |> IO.inspect()
+Keyword.fetch!(my_kw, :hello) |> IO.inspect()
 
-Keyword.get(my_kw, :hello) |> IO.inspect
-
-
+Keyword.get(my_kw, :hello) |> IO.inspect()
 
 # Maps
 
-IO.puts "Map operation"
+IO.puts("Map operation")
 
 my_map = %{:foo => "bar", :hello => "world"}
 
@@ -105,9 +104,9 @@ Map.drop(%{a: 1, b: 2, c: 3}, [:b, :c])
 Map.equal?(%{a: 1, b: 2, c: 3}, %{c: 3, b: 2, a: 1}) |> IO.inspect()
 
 key = "hello"
-%{key => "world"} |> IO.inspect
+%{key => "world"} |> IO.inspect()
 
-%{:foo => "bar", :foo => "Hello world"} |> IO.inspect
+%{:foo => "bar", :foo => "Hello world"} |> IO.inspect()
 
 IO.inspect(%{foo: "bar", hello: "world"} == %{:foo => "bar", :hello => "world"})
 
@@ -116,21 +115,20 @@ IO.inspect(my_map.foo)
 IO.inspect(my_map.hello)
 
 # if the map key is not an atom
- my_new_map = %{"one" => 1, "two" => 2, "three" => 3}
- IO.inspect(my_new_map["one"])
- IO.inspect(my_new_map["two"])
- IO.inspect(my_new_map["three"])
+my_new_map = %{"one" => 1, "two" => 2, "three" => 3}
+IO.inspect(my_new_map["one"])
+IO.inspect(my_new_map["two"])
+IO.inspect(my_new_map["three"])
 
 # update an existing key
 
 IO.inspect(%{my_new_map | "one" => 10})
 
 # create new key
-IO.inspect(Map.put(my_new_map, "four", 4 ))
+IO.inspect(Map.put(my_new_map, "four", 4))
 
 # but if the key is exist then Map.put will update that key
 
 IO.inspect(Map.put(my_new_map, "one", 1))
 
 IO.inspect(my_new_map)
-
