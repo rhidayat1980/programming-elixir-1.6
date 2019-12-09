@@ -83,20 +83,53 @@ Keyword.get(my_kw, :hello) |> IO.inspect
 
 # Maps
 
-# my_map = %{:foo => "bar", :hello => "world"}
+IO.puts "Map operation"
 
-# my_map |> IO.inspect()
+my_map = %{:foo => "bar", :hello => "world"}
 
-# my_map[:foo] |> IO.inspect()
-# my_map[:hello] |> IO.inspect()
+my_map |> IO.inspect()
 
-# Map.delete(my_map, :foo) |> IO.inspect()
-# Map.delete(my_map, :hello) |> IO.inspect()
+my_map[:foo] |> IO.inspect()
+my_map[:hello] |> IO.inspect()
 
-# # return an empty Map
-# Map.drop(my_map, [:foo, :hello]) |> IO.inspect()
+Map.delete(my_map, :foo) |> IO.inspect()
+Map.delete(my_map, :hello) |> IO.inspect()
 
-# Map.drop(%{a: 1, b: 2, c: 3}, [:b, :c])
-# |> IO.inspect()
+# return an empty Map
+Map.drop(my_map, [:foo, :hello]) |> IO.inspect()
 
-# Map.equal?(%{a: 1, b: 2, c: 3}, %{c: 3, b: 2, a: 1}) |> IO.inspect()
+Map.drop(%{a: 1, b: 2, c: 3}, [:b, :c])
+|> IO.inspect()
+
+Map.equal?(%{a: 1, b: 2, c: 3}, %{c: 3, b: 2, a: 1}) |> IO.inspect()
+
+key = "hello"
+%{key => "world"} |> IO.inspect
+
+%{:foo => "bar", :foo => "Hello world"} |> IO.inspect
+
+IO.inspect(%{foo: "bar", hello: "world"} == %{:foo => "bar", :hello => "world"})
+
+# if the map key is an atom
+IO.inspect(my_map.foo)
+IO.inspect(my_map.hello)
+
+# if the map key is not an atom
+ my_new_map = %{"one" => 1, "two" => 2, "three" => 3}
+ IO.inspect(my_new_map["one"])
+ IO.inspect(my_new_map["two"])
+ IO.inspect(my_new_map["three"])
+
+# update an existing key
+
+IO.inspect(%{my_new_map | "one" => 10})
+
+# create new key
+IO.inspect(Map.put(my_new_map, "four", 4 ))
+
+# but if the key is exist then Map.put will update that key
+
+IO.inspect(Map.put(my_new_map, "one", 1))
+
+IO.inspect(my_new_map)
+
