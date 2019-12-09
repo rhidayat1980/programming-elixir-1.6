@@ -74,3 +74,36 @@ import Integer
 Enum.filter(list_range, fn x -> is_even(x) end) |> IO.inspect
 Enum.filter(list_range, fn x -> is_odd(x) end) |> IO.inspect
 
+
+# reduce
+
+Enum.reduce(list_range, 0, fn x, acc -> acc + x end) |> IO.inspect
+
+Enum.reduce([1,2,3,4,5], 0, fn x, acc -> x + acc end) |> IO.inspect
+
+# accumulator is set to 0 if we did not specify
+Enum.reduce([1,2,3,4,5], fn x, acc -> x + acc end) |> IO.inspect
+
+Enum.reduce(["a", "b", "c", "d"], "1", fn x, acc -> x <> acc end) |> IO.inspect
+
+# can you see what happens here?
+Enum.reduce(["a", "b", "c", "d"], "1", fn x, acc -> acc <> x end) |> IO.inspect
+
+# sort
+
+Enum.sort(list) |> IO.inspect
+Enum.sort(list_string) |> IO.inspect
+Enum.sort(list_range) |> IO.inspect
+
+# sorting with condition as filter
+
+Enum.sort([%{:val => 4}, %{:val => 1}], fn(x, y) -> x[:val] > y[:val] end) |> IO.inspect
+
+# uniq
+
+Enum.uniq(list_string) |> IO.inspect
+Enum.uniq([1, 2, 3, 2, 1, 1, 1, 1, 1]) |> IO.inspect
+
+# uniq_by
+
+Enum.uniq_by([%{x: 1, y: 1}, %{x: 2, y: 1}, %{x: 3, y: 3}], fn coord -> coord.y end) |> IO.inspect

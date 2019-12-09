@@ -58,6 +58,7 @@ elem(my_tuples, 1) |> IO.inspect()
 elem(my_tuples, 2) |> IO.inspect()
 # elem(my_tuples, 3) |> IO.inspect # will throw an error for non existing tuples element
 
+# how to invoke shell from elixir? i don't know :)
 {:error, status} = File.read("`pwd`/basics/2.Collections.exs")
 
 IO.inspect(:error)
