@@ -5,7 +5,7 @@
 # all?
 # true if all true
 
-Enum.all?(["helle", "foo", "bar"], fn s -> String.length(s) == 3 end)
+Enum.all?(["hello", "foo", "bar"], fn s -> String.length(s) == 3 end)
 |> IO.puts()
 
 Enum.all?(["hello", "foo", "baf"], fn x -> String.length(x) >= 1 end)
